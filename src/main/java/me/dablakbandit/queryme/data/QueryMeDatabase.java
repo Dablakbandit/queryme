@@ -11,15 +11,15 @@ import java.sql.Timestamp;
 
 import me.dablakbandit.queryme.universal.database.listener.SQLListener;
 
-public class BungeeDatabase extends SQLListener{
+public class QueryMeDatabase extends SQLListener{
 	
-	private static BungeeDatabase database = new BungeeDatabase();
+	private static QueryMeDatabase database = new QueryMeDatabase();
 	
-	public static BungeeDatabase getInstance(){
+	public static QueryMeDatabase getInstance(){
 		return database;
 	}
 	
-	private BungeeDatabase(){
+	private QueryMeDatabase(){
 		
 	}
 	

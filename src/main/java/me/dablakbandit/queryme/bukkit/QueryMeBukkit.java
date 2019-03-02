@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.dablakbandit.core.configuration.Configuration;
 import me.dablakbandit.queryme.bukkit.config.MySQLConfiguration;
 import me.dablakbandit.queryme.bukkit.listener.HandshakeListener;
-import me.dablakbandit.queryme.data.BungeeDatabase;
+import me.dablakbandit.queryme.data.QueryMeDatabase;
 import me.dablakbandit.queryme.universal.database.Database;
 import me.dablakbandit.queryme.universal.database.mysql.MySQLDatabase;
 
@@ -26,17 +26,18 @@ public class QueryMeBukkit extends JavaPlugin{
 	public void onLoad(){
 		main = this;
 		QueryMeBukkitConfiguration.setup(this);
-	}
-	
-	public void onEnable(){
+		HandshakeListener.getInstance();
 		try{
 			MySQLConfiguration mysql = new MySQLConfiguration(new Configuration(this, "mysql.yml"));
 			db = new MySQLDatabase(mysql.getMySQL(), true);
-			db.addListener(BungeeDatabase.getInstance());
+			db.addListener(QueryMeDatabase.getInstance());
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		HandshakeListener.getInstance();
+	}
+	
+	public void onEnable(){
+		
 	}
 	
 	public void onDisable(){

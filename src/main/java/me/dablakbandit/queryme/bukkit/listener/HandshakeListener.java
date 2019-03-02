@@ -12,6 +12,7 @@ import me.dablakbandit.core.server.packet.ServerHandler;
 import me.dablakbandit.core.server.packet.ServerPacketListener;
 import me.dablakbandit.core.server.packet.ServerPacketManager;
 import me.dablakbandit.core.utils.PacketUtils;
+import me.dablakbandit.queryme.data.QueryMeDatabase;
 
 public class HandshakeListener extends ServerPacketListener{
 	
@@ -33,11 +34,10 @@ public class HandshakeListener extends ServerPacketListener{
 				InetSocketAddress socketAddress = (InetSocketAddress)handler.getChannel().remoteAddress();
 				InetAddress inetAddress = socketAddress.getAddress();
 				
-				inetAddress.getHostAddress();
+				String ip = inetAddress.getHostAddress();
 				String host = PacketUtils.HandshakingInSetProtocol.fieldPacketHandshakingInSetProtocolHostname.get(packet) + ":" + PacketUtils.HandshakingInSetProtocol.fieldPacketHandshakingInSetProtocolPort.get(packet);
 				int protocol = (int)PacketUtils.HandshakingInSetProtocol.fieldPacketHandshakingInSetProtocolProtocol.get(packet);
-				System.out.println(host);
-				System.out.println(protocol);
+				QueryMeDatabase.getInstance().add(ip, host, protocol);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
