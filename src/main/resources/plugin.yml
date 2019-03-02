@@ -1,0 +1,5 @@
+name: QueryMe
+version: ${version}
+main: me.dablakbandit.queryme.bukkit.QueryMeBukkit
+authors: [Dablakbandit]
+depend: [Core]

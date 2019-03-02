@@ -1,0 +1,4 @@
+name: QueryMe
+version: ${version}
+main: me.dablakbandit.queryme.bungee.QueryMeBungee
+authors: [Dablakbandit]
