@@ -7,6 +7,7 @@ package me.dablakbandit.queryme.bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.dablakbandit.core.configuration.Configuration;
+import me.dablakbandit.core.metrics.Metrics;
 import me.dablakbandit.queryme.bukkit.config.MySQLConfiguration;
 import me.dablakbandit.queryme.bukkit.listener.HandshakeListener;
 import me.dablakbandit.queryme.data.QueryMeDatabase;
@@ -37,7 +38,7 @@ public class QueryMeBukkit extends JavaPlugin{
 	}
 	
 	public void onEnable(){
-		
+		new Metrics(this, "QueryMe");
 	}
 	
 	public void onDisable(){

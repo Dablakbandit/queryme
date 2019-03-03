@@ -3,3 +3,4 @@ version: ${version}
 main: me.dablakbandit.queryme.bukkit.QueryMeBukkit
 authors: [Dablakbandit]
 depend: [Core]
+api-version: 1.13

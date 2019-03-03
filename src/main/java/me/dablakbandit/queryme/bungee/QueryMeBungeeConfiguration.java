@@ -10,11 +10,11 @@ import java.util.List;
 
 import me.dablakbandit.queryme.bungee.config.FileConfiguration;
 
-public class QueryMeBungeeConfigration{
+public class QueryMeBungeeConfiguration{
 	
-	private static QueryMeBungeeConfigration qconfig = new QueryMeBungeeConfigration();
+	private static QueryMeBungeeConfiguration qconfig = new QueryMeBungeeConfiguration();
 	
-	public static QueryMeBungeeConfigration getInstance(){
+	public static QueryMeBungeeConfiguration getInstance(){
 		return qconfig;
 	}
 	
@@ -22,7 +22,7 @@ public class QueryMeBungeeConfigration{
 	
 	private FileConfiguration	config;
 	
-	private QueryMeBungeeConfigration(){
+	private QueryMeBungeeConfiguration(){
 		try{
 			config = new FileConfiguration(QueryMeBungee.getInstance(), "config.yml");
 		}catch(Exception e){

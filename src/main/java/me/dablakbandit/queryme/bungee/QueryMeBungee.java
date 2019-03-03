@@ -36,7 +36,7 @@ public class QueryMeBungee extends Plugin{
 		}
 		HandshakeListener.getInstance();
 		// getProxy().getPluginManager().registerCommand(this, new QueryMeCommand());
-		QueryMeBungeeConfigration.getInstance();
+		QueryMeBungeeConfiguration.getInstance();
 	}
 	
 	public void onDisable(){

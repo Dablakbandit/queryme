@@ -5,7 +5,7 @@
 package me.dablakbandit.queryme.bungee.listener;
 
 import me.dablakbandit.queryme.bungee.QueryMeBungee;
-import me.dablakbandit.queryme.bungee.QueryMeBungeeConfigration;
+import me.dablakbandit.queryme.bungee.QueryMeBungeeConfiguration;
 import me.dablakbandit.queryme.data.QueryMeDatabase;
 import net.md_5.bungee.api.connection.PendingConnection;
 import net.md_5.bungee.api.event.PlayerHandshakeEvent;
@@ -31,7 +31,7 @@ public class HandshakeListener implements Listener{
 		PendingConnection pc = event.getConnection();
 		Handshake hs = event.getHandshake();
 		String ip = pc.getAddress().getHostString();
-		if(QueryMeBungeeConfigration.getInstance().getBlacklist().contains(ip)){ return; }
+		if(QueryMeBungeeConfiguration.getInstance().getBlacklist().contains(ip)){ return; }
 		String host = hs.getHost() + ":" + hs.getPort();
 		int protocol = hs.getProtocolVersion();
 		QueryMeDatabase.getInstance().add(ip, host, protocol);
