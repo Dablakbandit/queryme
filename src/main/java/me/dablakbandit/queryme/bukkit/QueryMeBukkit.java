@@ -6,13 +6,7 @@ package me.dablakbandit.queryme.bukkit;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.dablakbandit.core.configuration.Configuration;
-import me.dablakbandit.core.metrics.Metrics;
-import me.dablakbandit.queryme.bukkit.config.MySQLConfiguration;
-import me.dablakbandit.queryme.bukkit.listener.HandshakeListener;
-import me.dablakbandit.queryme.data.QueryMeDatabase;
-import me.dablakbandit.queryme.universal.database.Database;
-import me.dablakbandit.queryme.universal.database.mysql.MySQLDatabase;
+import me.dablakbandit.core.plugin.downloader.CorePluginDownloader;
 
 public class QueryMeBukkit extends JavaPlugin{
 	
@@ -22,27 +16,27 @@ public class QueryMeBukkit extends JavaPlugin{
 		return main;
 	}
 	
-	private Database db;
+	private QueryMeCoreHandler handler;
 	
 	public void onLoad(){
 		main = this;
-		QueryMeBukkitConfiguration.setup(this);
-		HandshakeListener.getInstance();
-		try{
-			MySQLConfiguration mysql = new MySQLConfiguration(new Configuration(this, "mysql.yml"));
-			db = new MySQLDatabase(mysql.getMySQL(), true);
-			db.addListener(QueryMeDatabase.getInstance());
-		}catch(Exception e){
-			e.printStackTrace();
+		if(CorePluginDownloader.ensureCorePlugin()){
+			saveDefaultConfig();
+			handler = QueryMeCoreHandler.getInstance();
+			handler.onLoad();
 		}
 	}
 	
 	public void onEnable(){
-		new Metrics(this, "QueryMe");
+		if(handler != null){
+			handler.onEnable();
+		}
 	}
 	
 	public void onDisable(){
-		
+		if(handler != null){
+			handler.onDisable();
+		}
 	}
 	
 }
